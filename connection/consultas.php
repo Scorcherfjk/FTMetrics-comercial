@@ -54,7 +54,7 @@ function dropDown(){
 function updateQuery($lOEEWorkCellId, $quantity){
     
     $query = "UPDATE FTMetrics2.dbo.OEEWorkCell
-            SET dPartCount = (dPartCount - '$quantity'), dScrapParts = (dScrapParts + '$quantity') 12517124
+            SET dPartCount = (dPartCount - '$quantity'), dScrapParts = (dScrapParts + '$quantity')
             WHERE lOEEWorkCellId = '$lOEEWorkCellId'";
 
     return $query;
