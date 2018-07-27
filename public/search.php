@@ -5,7 +5,7 @@
 
 if ( !(isset($_SESSION['opcion1'])) ){
 	if ( !(isset($_POST['inicio'])) || $_POST['inicio'] == "" || !(isset($_POST['final'])) || $_POST['final'] == ""){
-		header("Location:"."/FTMetrics/php/public/");
+		header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
 	}else{
 		$_SESSION['opcion1'] = $_POST['seleccion'];
 		$_SESSION['fechaI1'] = str_replace("T"," ",$_POST['inicio']).":00.000" ;

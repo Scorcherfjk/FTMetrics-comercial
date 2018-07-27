@@ -124,7 +124,7 @@
 		}else{
 			//en caso de la conexion falle
 			echo "Conexión no se pudo establecer.<br />";
-			die( "<strong>el error ha sido : </strong>".print_r( sqlsrv_errors(), true));
+			die( "<strong>el error ha sido : </strong><br/>".print_r( sqlsrv_errors(), true));
 		}
 			?>
 	</div>

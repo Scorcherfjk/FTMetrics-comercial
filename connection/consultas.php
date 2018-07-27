@@ -1,7 +1,7 @@
 <?php
 
-function defaultQuery()
-{
+function defaultQuery($Database = "FTMetrics2")
+{   
     $query = "SELECT 							
             TOP 10					
             cwc.sShortName
@@ -9,8 +9,8 @@ function defaultQuery()
             ,SUM(wc.dPartCount) AS dPartCount
             ,SUM(wc.dTotalParts) AS dTotalParts
             ,SUM(wc.dScrapParts) AS dScrapParts
-        FROM FTMetrics2.dbo.OEEWorkCell as wc
-            ,FTMetrics2.dbo.OEEConfigWorkCell as cwc
+        FROM $Database.dbo.OEEWorkCell as wc
+            ,$Database.dbo.OEEConfigWorkCell as cwc
         WHERE wc.lOEEConfigWorkCellId = cwc.lOEEConfigWorkCellId
         GROUP BY cwc.sShortName, wc.sPartId
         ORDER BY cwc.sShortName";
@@ -18,7 +18,7 @@ function defaultQuery()
     return $query;
 }
 
-function primaryQuery($opcion,$inicio,$final)
+function primaryQuery($opcion,$inicio,$final,$Database = "FTMetrics2")
 {
     $query = "SELECT wc.lOEEWorkCellId,
             cwc.lOEEConfigWorkCellId,
@@ -29,8 +29,8 @@ function primaryQuery($opcion,$inicio,$final)
             wc.dPartCount,
             wc.dTotalParts,
             wc.dScrapParts
-        FROM FTMetrics2.dbo.OEEWorkCell as wc
-        ,FTMetrics2.dbo.OEEConfigWorkCell as cwc
+        FROM $Database.dbo.OEEWorkCell as wc
+        ,$Database.dbo.OEEConfigWorkCell as cwc
         WHERE wc.lOEEConfigWorkCellId = cwc.lOEEConfigWorkCellId
             AND wc.lOEEConfigWorkCellId = $opcion
             AND (wc.tStart >= '$inicio' OR wc.tEnd <= '$final')
@@ -40,10 +40,10 @@ function primaryQuery($opcion,$inicio,$final)
     return $query;
 }
 
-function dropDown(){
+function dropDown($Database = "FTMetrics2"){
     $query ="SELECT cwc.sShortName as ssn, wc.lOEEConfigWorkCellId as icwc
-            FROM FTMetrics2.dbo.OEEWorkCell as wc, 
-                FTMetrics2.dbo.OEEConfigWorkCell as cwc
+            FROM $Database.dbo.OEEWorkCell as wc, 
+            $Database.dbo.OEEConfigWorkCell as cwc
             WHERE wc.lOEEConfigWorkCellId = cwc.lOEEConfigWorkCellId
             GROUP BY cwc.sShortName, wc.lOEEConfigWorkCellId 
             ORDER BY cwc.sShortName";
@@ -51,9 +51,9 @@ function dropDown(){
     return $query;   
 }
 
-function updateQuery($lOEEWorkCellId, $quantity){
+function updateQuery($lOEEWorkCellId, $quantity,$Database = "FTMetrics2"){
     
-    $query = "UPDATE FTMetrics2.dbo.OEEWorkCell
+    $query = "UPDATE $Database.dbo.OEEWorkCell
             SET dPartCount = (dPartCount - '$quantity'), dScrapParts = (dScrapParts + '$quantity')
             WHERE lOEEWorkCellId = '$lOEEWorkCellId'";
 

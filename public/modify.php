@@ -6,7 +6,7 @@
     <?php
 
     if ($_POST['inicio'] == "" || $_POST['final'] == ""){
-    header("Location:"."/FTMetrics/php/public/");
+    header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
     }else{
     $_SESSION['opcion3'] = $_POST['seleccion'];
     $_SESSION['fechaI3'] = $_POST['inicio'];
@@ -22,7 +22,7 @@
     $final = $_SESSION['fechaF3'];
 
     if ( isset($_POST['addScrap']) && $_POST['addScrap'] != "" ){
-    header("Location:"."/FTMetrics/php/public/");
+    header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
     }else{
     $_POST['seleccion'] = $_SESSION['opcion3'];
     $_POST['inicio'] = $_SESSION['fechaI3'];
@@ -70,7 +70,7 @@
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <h5 class="nav-link"> Good Parts: <code><?php $val1 = total($datos1, 'dPartCount');
-                    echo (strpos($va1l1, '.')) ? substr($val1, 0 , strpos($val1, '.'))
+                    echo (strpos($val1, '.')) ? substr($val1, 0 , strpos($val1, '.'))
                     .substr($val1, strrpos ($val1, ".") , 3) : $val1; ?></code></h5>
                 </li>
                 <li class="nav-item">
