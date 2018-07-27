@@ -3,7 +3,7 @@
 function defaultQuery()
 {
     $query = "SELECT 							
-            TOP 100						
+            TOP 10					
             cwc.sShortName
             ,wc.sPartId
             ,SUM(wc.dPartCount) AS dPartCount
@@ -54,7 +54,7 @@ function dropDown(){
 function updateQuery($lOEEWorkCellId, $quantity){
     
     $query = "UPDATE FTMetrics2.dbo.OEEWorkCell
-            SET dPartCount = (dPartCount - '$quantity'), dScrapParts = '$quantity'
+            SET dPartCount = (dPartCount - '$quantity'), dScrapParts = (dScrapParts + '$quantity') 12517124
             WHERE lOEEWorkCellId = '$lOEEWorkCellId'";
 
     return $query;

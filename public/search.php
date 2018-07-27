@@ -16,6 +16,7 @@ if ( !(isset($_SESSION['opcion1'])) ){
 	require('../connection/conexion.php');
 	require('../connection/consultas.php');
 	require('../connection/funciones.php');
+	$ff = array();
 
 ?>
 
@@ -26,9 +27,9 @@ if ( !(isset($_SESSION['opcion1'])) ){
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
 	<title>FTMetrics - Search</title>
   </head>
   <body>
@@ -36,7 +37,7 @@ if ( !(isset($_SESSION['opcion1'])) ){
 	
     	<div class="jumbotron">
 		<button type="button" class="btn btn-primary" 
-			onclick="location='/FTMetrics/php/public/'">back</button>
+			onclick="location='/FTMetrics/FTMetrics-comercial/public/'">back</button>
 			<div class="row">
 				
 				<h1 class='text-center display-1 col'><a href="./index.php"> FTMetrics</a></h1>
@@ -119,7 +120,7 @@ if ( !(isset($_SESSION['opcion1'])) ){
 							
 							json_encode($datos1); ?>
 									<tr class='text-right'>
-										<form action="searchSpecific.php" method="post">
+										<form action="modify.php" method="post">
 											<th scope="row"><?php echo $datos1[0]['sShortName'] ?></th>
 											<td><?php echo $datos1[0]['sPartId']; ?></td>
 											<td><?php echo  substr($datos1[0]['tStart']->date, 0, 19); ?></td>
@@ -189,8 +190,6 @@ if ( !(isset($_SESSION['opcion1'])) ){
 	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-  </body>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	</body>
 </html>
