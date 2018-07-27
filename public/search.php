@@ -11,6 +11,10 @@ if ( !(isset($_SESSION['opcion1'])) ){
 		$_SESSION['fechaI1'] = str_replace("T"," ",$_POST['inicio']).":00.000" ;
 		$_SESSION['fechaF1'] = str_replace("T"," ",$_POST['final']).":00.000" ;
 	}
+} elseif ( isset($_POST['inicio']) && $_POST['inicio'] == "" ) {
+	$_SESSION['opcion1'] = $_POST['seleccion'];
+	$_SESSION['fechaI1'] = $_POST['inicio'];
+	$_SESSION['fechaF1'] = $_POST['inicio'];
 }
 
 	require('../connection/conexion.php');
@@ -38,37 +42,9 @@ if ( !(isset($_SESSION['opcion1'])) ){
     	<div class="jumbotron">
 		<button type="button" class="btn btn-primary" 
 			onclick="location='/FTMetrics/FTMetrics-comercial/public/'">back</button>
-			<div class="row">
-				
-				<h1 class='text-center display-1 col'><a href="./index.php"> FTMetrics</a></h1>
-
-				<!--inicio del formulario-->
-				<form name="form1" method="post" action="search.php" style="max-width:300px; margin:auto;" class="col">
-
-					<!--ventana de seleccion de opciones-->
-					<div class="form-group">
-						<label for="seleccion">Machine</label>
-						<input type="hidden" name="seleccion" id="seleccion" value="1000025">
-						<input class="form-control" value="Entubadora" type="text" readonly>
-					</div>
-
-					<!--fecha inicial-->
-					<div class="form-group">
-						<label for="inicio">Start Time</label>
-						<input require id="inicio" name="inicio" class="form-control" type="datetime-local" autofocus>
-					</div>
-
-					<!--fecha final-->
-					<div class="form-group">
-						<label for="final">End Time</label>
-						<input require id="final" name="final" class="form-control" type="datetime-local">
-					</div>
-
-					<!--botones del formulario-->
-					<button class="btn btn-primary" type="submit" value="Submit" name="button" id="button">Search</button>
-					<button class="btn btn-primary" type="reset" value="reset" name="button2" id="button2">Reset</button>
-				</form>
-			</div>
+					<h1 class='text-center display-1'><a href="./index.php"> FTMetrics</a></h1>
+					<h1 class="text-center display-4">Scrap Management</h1>
+					<img src="image.png" style="display:block; margin:auto;">
     	</div>
 		<?php
 

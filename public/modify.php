@@ -6,11 +6,11 @@
     <?php
 
     if ($_POST['inicio'] == "" || $_POST['final'] == ""){
-    header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
+        header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
     }else{
-    $_SESSION['opcion3'] = $_POST['seleccion'];
-    $_SESSION['fechaI3'] = $_POST['inicio'];
-    $_SESSION['fechaF3'] = $_POST['final'];
+        $_SESSION['opcion3'] = $_POST['seleccion'];
+        $_SESSION['fechaI3'] = $_POST['inicio'];
+        $_SESSION['fechaF3'] = $_POST['final'];
     }
 
     require('../connection/conexion.php');
@@ -22,11 +22,11 @@
     $final = $_SESSION['fechaF3'];
 
     if ( isset($_POST['addScrap']) && $_POST['addScrap'] != "" ){
-    header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
+        header("Location:"."/FTMetrics/FTMetrics-comercial/public/");
     }else{
-    $_POST['seleccion'] = $_SESSION['opcion3'];
-    $_POST['inicio'] = $_SESSION['fechaI3'];
-    $_POST['final'] = $_SESSION['fechaF3'];
+        $_POST['seleccion'] = $_SESSION['opcion3'];
+        $_POST['inicio'] = $_SESSION['fechaI3'];
+        $_POST['final'] = $_SESSION['fechaF3'];
     }
     $ff = array();
 
@@ -42,9 +42,15 @@
     <body>
         <div class="container">
             <div class="jumbotron">
-                <div class="row">
-                    <h1 class='text-center display-1 col'>FTMetrics</h1>
+            <div class="row">
+                <div class="col">
+                    <h1 class='text-center display-1'>FTMetrics</h1>
+                    <h1 class="text-center display-4">Scrap Management</h1>
                 </div>
+                <div class="col">
+                    <img src="image.png" style="display:block; margin:auto;">
+                </div>
+		    </div>
             </div>
 
         <?php
