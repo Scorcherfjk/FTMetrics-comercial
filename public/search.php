@@ -41,13 +41,19 @@ if ( !(isset($_SESSION['opcion1'])) ){
 	
     	<div class="jumbotron">
 		<button type="button" class="btn btn-primary" 
-			onclick="location='/FTMetrics/FTMetrics-comercial/public/'">back</button>
-			<div class="btn-group float-right">
+			onclick="location='/FTMetrics/FTMetrics-comercial/public/'"> &#10094; back</button>
+			<div class="btn-group float-right" role="group" aria-label="Basic example">
 				<form action="../connection/csv.php" method="post">
 					<input type="hidden" name="opcion" value="<?php echo $_SESSION['opcion1']; ?>">
 					<input type="hidden" name="inicio" value="<?php echo $_SESSION['fechaI1']; ?>">
 					<input type="hidden" name="final" value="<?php echo $_SESSION['fechaF1']; ?>">
-					<button class="btn btn-primary" type="submit">csv</button>
+					<button class="btn btn-primary btn-group " type="submit">&#8681; csv</button>
+				</form>
+				<form action="../connection/xls.php" method="post">
+					<input type="hidden" name="opcion" value="<?php echo $_SESSION['opcion1']; ?>">
+					<input type="hidden" name="inicio" value="<?php echo $_SESSION['fechaI1']; ?>">
+					<input type="hidden" name="final" value="<?php echo $_SESSION['fechaF1']; ?>">
+					<button class="btn btn-primary btn-group " type="submit">&#8681; xls</button>
 				</form>
 			</div>
 					<h1 class='text-center display-1'><a href="./index.php"> FTMetrics</a></h1>
