@@ -47,13 +47,19 @@ if ( !(isset($_SESSION['opcion1'])) ){
 					<input type="hidden" name="opcion" value="<?php echo $_SESSION['opcion1']; ?>">
 					<input type="hidden" name="inicio" value="<?php echo $_SESSION['fechaI1']; ?>">
 					<input type="hidden" name="final" value="<?php echo $_SESSION['fechaF1']; ?>">
-					<button class="btn btn-primary btn-group " type="submit">&#8681; csv</button>
+					<button class="btn btn-outline-primary" type="submit">&#8659; csv</button>
 				</form>
 				<form action="../connection/xls.php" method="post">
 					<input type="hidden" name="opcion" value="<?php echo $_SESSION['opcion1']; ?>">
 					<input type="hidden" name="inicio" value="<?php echo $_SESSION['fechaI1']; ?>">
 					<input type="hidden" name="final" value="<?php echo $_SESSION['fechaF1']; ?>">
-					<button class="btn btn-primary btn-group " type="submit">&#8681; xls</button>
+					<button class="btn btn-outline-primary" type="submit">&#8659; xls</button>
+				</form>
+				<form action="../connection/pdf.php" method="post">
+					<input type="hidden" name="opcion" value="<?php echo $_SESSION['opcion1']; ?>">
+					<input type="hidden" name="inicio" value="<?php echo $_SESSION['fechaI1']; ?>">
+					<input type="hidden" name="final" value="<?php echo $_SESSION['fechaF1']; ?>">
+					<button class="btn btn-outline-primary" type="submit">&#8659; pdf</button>
 				</form>
 			</div>
 					<h1 class='text-center display-1'><a href="./index.php"> FTMetrics</a></h1>
