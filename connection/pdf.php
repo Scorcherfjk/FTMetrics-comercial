@@ -105,7 +105,7 @@ if( isset( $conn ) ) {
 $dompdf->loadHtml($html);
 
 // (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4', 'landscape');
+$dompdf->setPaper('A4', 'portrait'); //'portrait' => vertical or 'landscape' => horizontal) 
 ini_set("memory_limit","128M");
 // Render the HTML as PDF
 $dompdf->render();
