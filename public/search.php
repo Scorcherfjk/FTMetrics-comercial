@@ -14,7 +14,7 @@ if ( !(isset($_SESSION['opcion1'])) ){
 } elseif ( isset($_POST['inicio']) && $_POST['inicio'] == "" ) {
 	$_SESSION['opcion1'] = $_POST['seleccion'];
 	$_SESSION['fechaI1'] = $_POST['inicio'];
-	$_SESSION['fechaF1'] = $_POST['inicio'];
+	$_SESSION['fechaF1'] = $_POST['final'];
 }
 
 	require('../connection/conexion.php');
@@ -42,6 +42,14 @@ if ( !(isset($_SESSION['opcion1'])) ){
     	<div class="jumbotron">
 		<button type="button" class="btn btn-primary" 
 			onclick="location='/FTMetrics/FTMetrics-comercial/public/'">back</button>
+			<div class="btn-group float-right">
+				<form action="../connection/csv.php" method="post">
+					<input type="hidden" name="opcion" value="<?php echo $_SESSION['opcion1']; ?>">
+					<input type="hidden" name="inicio" value="<?php echo $_SESSION['fechaI1']; ?>">
+					<input type="hidden" name="final" value="<?php echo $_SESSION['fechaF1']; ?>">
+					<button class="btn btn-primary" type="submit">csv</button>
+				</form>
+			</div>
 					<h1 class='text-center display-1'><a href="./index.php"> FTMetrics</a></h1>
 					<h1 class="text-center display-4">Scrap Management</h1>
 					<img src="image.png" style="display:block; margin:auto;">
@@ -102,14 +110,11 @@ if ( !(isset($_SESSION['opcion1'])) ){
 											<td><?php echo  substr($datos1[0]['tStart']->date, 0, 19); ?></td>
 											<td><?php echo substr(end($datos1)['tEnd']->date, 0, 19); ?></td>
 											<td><?php $val = total($datos1, 'dPartCount');
-														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.'))
-															.substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
+														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.')).substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
 											<td><?php $val = total($datos1, 'dTotalParts');
-														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.'))
-															.substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
+														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.')).substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
 											<td><?php $val = total($datos1, 'dScrapParts');
-														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.'))
-															.substr($val, strrpos ($val, 3)) : $val; ?></td>
+														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.')).substr($val, strrpos ($val, 3)) : $val; ?></td>
 											<input type="hidden" id="seleccion" name="seleccion" value="<?php echo $datos1[0]['lOEEConfigWorkCellId']; ?>">
 											<input type="hidden"  id="inicio" name="inicio" value="<?php echo substr($datos1[0]['tStart']->date, 0, 19); ?>">
 											<input type="hidden" id="final" name="final" value="<?php echo substr(end($datos1)['tEnd']->date, 0, 19); ?>">						
@@ -126,20 +131,17 @@ if ( !(isset($_SESSION['opcion1'])) ){
 					}else{
 						json_encode($datos1); ?>
 									<tr class='text-right'>
-										<form action="searchSpecific.php" method="post">
+								<form action="modify.php" method="post">
 											<th scope="row"><?php echo $datos1[0]['sShortName'] ?></th>
 											<td><?php echo $datos1[0]['sPartId']; ?></td>
 											<td><?php echo  substr($datos1[0]['tStart']->date, 0, 19); ?></td>
 											<td><?php echo substr(end($datos1)['tEnd']->date, 0, 19); ?></td>
 											<td><?php $val = total($datos1, 'dPartCount');
-														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.'))
-															.substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
+														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.')).substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
 											<td><?php $val = total($datos1, 'dTotalParts');
-														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.'))
-															.substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
+														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.')).substr($val, strrpos ($val, ".") , 3) : $val; ?></td>
 											<td><?php $val = total($datos1, 'dScrapParts');
-														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.'))
-															.substr($val, strrpos ($val, 3)) : $val; ?></td>
+														echo (strpos($val, '.')) ? substr($val, 0 , strpos($val, '.')).substr($val, strrpos ($val, 3)) : $val; ?></td>
 											<input type="hidden" id="seleccion" name="seleccion" value="<?php echo $datos1[0]['lOEEConfigWorkCellId']; ?>">
 											<input type="hidden"  id="inicio" name="inicio" value="<?php echo substr($datos1[0]['tStart']->date, 0, 19); ?>">
 											<input type="hidden" id="final" name="final" value="<?php echo substr(end($datos1)['tEnd']->date, 0, 19); ?>">						
