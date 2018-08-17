@@ -115,6 +115,7 @@
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="addScrap" class="sr-only">addScrap</label>
                     <input required type="number" class="form-control score" name="addScrap" id="addScrap" placeholder="Scrap">
+                    <input type="hidden" name="sPartId" value="<?php  echo substr( $datos1[0]['sPartId'],0,2); ?>">
                     <input type="hidden" name="lOEEWorkCellId" value="<?php  echo end($datos1)['lOEEWorkCellId']; ?>">
                     <input type="hidden" name="dtotalParts" value="<?php  echo $val2 ?>">
                 </div>
@@ -131,6 +132,7 @@
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="addScrap" class="sr-only">addScrap</label>
                     <input readonly required type="number" class="form-control" name="addScrap" id="addScrap" placeholder="Scrap">
+                    <input type="hidden" name="sPartId" value="<?php  echo substr( $datos1[0]['sPartId'],0,2); ?>">
                     <input type="hidden" name="lOEEWorkCellId" value="<?php  echo end($datos1)['lOEEWorkCellId']; ?>">
                     <input type="hidden" name="dtotalParts" value="<?php  echo $val2 ?>">
                 </div>
@@ -164,6 +166,11 @@
         <script src="../bootstrap/js/jquery-3.3.1.min.js"></script>
         <script src="../bootstrap/js/bind.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <?php if( substr( $datos1[0]['sPartId'],0,2) == "SW" ){
+                        echo "<script src='../bootstrap/js/main_sw.js'></script>";
+                    }else{
+                        echo "<script src='../bootstrap/js/main_px.js'></script>";
+                    } ?>
         <script src="../bootstrap/js/main.js"></script>
     </body>
 </html>
