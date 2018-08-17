@@ -83,13 +83,28 @@
                     <h5 class="nav-link"> Total Parts: <code><?php $val2 = total($datos1, 'dTotalParts');
                     echo (strpos($val2, '.')) ? substr($val2, 0 , strpos($val2, '.'))
                     .substr($val2, strrpos ($val2, ".") , 3) : $val2; ?></code></h5>
+                </li>
                 <li class="nav-item">
                     <h5 class="nav-link"> Scrap Parts: <code><?php $val3 = total($datos1, 'dScrapParts');
                     echo (strpos($val3, '.')) ? substr($val3, 0 , strpos($val3, '.'))
                     .substr($val3, strrpos ($val3, 3)) : $val3; ?></code></h5> 
                 </li>
             </ul>
-            <br><br>
+            <br>
+            <?php if(substr( $datos1[0]['sPartId'],0,2) == "SW" || substr( $datos1[0]['sPartId'],0,2) == "PX" ){ ?>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <h5 class="nav-link"> Conversion factor: <code><?php if( substr( $datos1[0]['sPartId'],0,2) == "SW" ){
+                        echo "1kg = 1.111 m/kg";
+                    }else{
+                        echo "1kg = 5 m/kg";
+                    } ?></code></h5> 
+                </li>
+                <li class="nav-item">
+                    <h5 class="nav-link"> Total: <code class="score"></code> m/kg</h5>
+                </li>   
+            </ul><br>
+                <?php }else{ echo "<br>"; } ?>
             <?php if ($val2 != 0){ ?>
 
             <form class="form-inline justify-content-center" method="POST" action="../connection/update.php">
@@ -99,7 +114,7 @@
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="addScrap" class="sr-only">addScrap</label>
-                    <input required type="number" class="form-control" name="addScrap" id="addScrap" placeholder="Scrap">
+                    <input required type="number" class="form-control score" name="addScrap" id="addScrap" placeholder="Scrap">
                     <input type="hidden" name="lOEEWorkCellId" value="<?php  echo end($datos1)['lOEEWorkCellId']; ?>">
                     <input type="hidden" name="dtotalParts" value="<?php  echo $val2 ?>">
                 </div>
@@ -119,8 +134,8 @@
                     <input type="hidden" name="lOEEWorkCellId" value="<?php  echo end($datos1)['lOEEWorkCellId']; ?>">
                     <input type="hidden" name="dtotalParts" value="<?php  echo $val2 ?>">
                 </div>
-                <button disabled type="submit" class="btn btn-primary mb-2">Add Scrap</button>
-            </form>
+                <button disabled type="submit" class="btn btn-primary mb-2">Add Scrap</button><br><br>
+            </form><br><br>
 
             <div class="alert alert-danger text-center" style="max-width:510px; margin:auto;" role="alert">
             can't modify because there is'n production
@@ -146,6 +161,9 @@
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="../bootstrap/js/jquery-3.3.1.min.js"></script>
+        <script src="../bootstrap/js/bind.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/js/main.js"></script>
     </body>
 </html>
