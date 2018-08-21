@@ -4,7 +4,7 @@
     require('./consultas.php');
     require('./funciones.php');
 
-    if( $_POST['sPartId'] == "SW" ){
+    if( $_POST['sPartId'] == "SW" || $_POST['sPartId'] == "2CS" ){
         $quantity = $_POST['addScrap'] * 1.111;
     }else{
         $quantity = $_POST['addScrap'] * 5;

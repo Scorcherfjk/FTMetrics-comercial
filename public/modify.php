@@ -91,10 +91,10 @@
                 </li>
             </ul>
             <br>
-            <?php if(substr( $datos1[0]['sPartId'],0,2) == "SW" || substr( $datos1[0]['sPartId'],0,2) == "PX" ){ ?>
+            <?php if(substr( $datos1[0]['sPartId'],0,2) == "SW" || substr( $datos1[0]['sPartId'],0,2) == "PX" || substr( $datos1[0]['sPartId'],0,3) == "2CS"  ){ ?>
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <h5 class="nav-link"> Conversion factor: <code><?php if( substr( $datos1[0]['sPartId'],0,2) == "SW" ){
+                    <h5 class="nav-link"> Conversion factor: <code><?php if( substr( $datos1[0]['sPartId'],0,2) == "SW" || substr( $datos1[0]['sPartId'],0,3) == "2CS" ){
                         echo "1kg = 1.111 m/kg";
                     }else{
                         echo "1kg = 5 m/kg";
